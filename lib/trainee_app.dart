@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'models/event.dart';
 
 class FlutterTutorialApp extends StatelessWidget {
@@ -9,98 +8,116 @@ class FlutterTutorialApp extends StatelessWidget {
         surname: "Миногаров",
         profession: "Analyst",
         telefon: "+79065785465",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/123.jpg"
+        ),
     Event(
-        name: "Алиса",
+        name: "Мелиса",
         surname: "Иванова",
         profession: "Designer",
         telefon: "+79081112233",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Андрей",
         surname: "Иванов",
         profession: "Designer",
         telefon: "+79092223344",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Анна",
         surname: "Иванова",
         profession: "Analyst Team Lead",
         telefon: "+79053332211",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Анна",
         surname: "Смирнова",
         profession: "Analyst",
         telefon: "+79090001188",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Влада",
         surname: "Вейн",
         profession: "Manager",
         telefon: "+79043332299",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Дана",
         surname: "Хаматора",
         profession: "Manager",
         telefon: "+79078889933",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/123.jpg")),
+        imgUrl: "assets/image/123.jpg",
+        ),
     Event(
         name: "Иван",
         surname: "Андреенко",
         profession: "Analyst",
         telefon: "+79036667755",
-        foto: Image.asset("assets/image/234.jpg")),
+        imgUrl: "assets/image/234.jpg",
+        ),
   ];
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -144,15 +161,17 @@ class FlutterTutorialApp extends StatelessWidget {
                   fontFamily: "Inter",
                 ),
               ),
-              leading: ClipOval(
-                child: Image.asset('assets/image/123.jpg',
-                    height: 50.0, width: 50.0, fit: BoxFit.fitWidth),
+              leading: Image.asset(
+                events[index].imgUrl,
+                height: 50.0, 
+                width: 50.0, 
+                fit: BoxFit.fitWidth
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
 

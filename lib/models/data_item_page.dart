@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 // ignore: must_be_immutable
 class DataItemPage extends StatefulWidget {
@@ -38,6 +39,7 @@ class _DataItemPageState extends State<DataItemPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,34 +168,36 @@ class _DataItemPageState extends State<DataItemPage> {
               final act = CupertinoActionSheet(
                   actions: <Widget>[
                     CupertinoActionSheetAction(
-                      onPressed: () {
-                        print('телефон');
+                      // onPressed: () {
+                      // launchURL("tel://+7906417827");
+                      // },
+                      onPressed: () async {
+                        FlutterPhoneDirectCaller.callNumber(telefon);
                       },
-                      child: Text(telefon,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.normal,
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      ),
+                      child: Text(
+                        telefon,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.normal,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
                       ),
                     ),
                   ],
                   cancelButton: CupertinoActionSheetAction(
-                    isDefaultAction: true,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Отмена',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0)
-                        ),
-                      )
-                    )
-                  );
+                      isDefaultAction: true,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'Отмена',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 0, 0, 0)),
+                      )));
               showCupertinoModalPopup(
                   context: context, builder: (BuildContext context) => act);
             },
@@ -208,3 +212,6 @@ int a = 2022;
 int b = 1996;
 int num = a - b;
 
+// var d = "4 июня 1996";
+// var numd = int.parse(d);
+// print('число: $numd');

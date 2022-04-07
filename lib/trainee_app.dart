@@ -22,39 +22,35 @@ class MyApp extends StatelessWidget {
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
 
+  @override
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage>
-    with SingleTickerProviderStateMixin {
-  late TabController controller;
-  @override
-  void initState() {
-    super.initState();
-    controller = new TabController(length: 4, vsync: this, initialIndex: 0);
-  }
-
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
-        .copyWith(statusBarColor: Color.fromARGB(255, 255, 255, 255)));
-    return Scaffold(
+        .copyWith(statusBarColor: const Color.fromARGB(255, 255, 255, 255)));
+    return DefaultTabController(
+      length: 6,
+      child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           title: Container(
             margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 247, 247, 248),
               borderRadius: BorderRadius.all(Radius.circular(35.0)),
             ),
+            // ignore: sort_child_properties_last
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Expanded(
                   flex: 1,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15.0),
-                    child: TextFormField(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: TextField(
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Введи имя, тег, почту...",
@@ -80,13 +76,13 @@ class _MainPageState extends State<MainPage>
                 Expanded(
                   flex: 0,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Row(
                       children: <Widget>[
                         const VerticalDivider(color: Colors.white54),
                         IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.menu,
+                          icon: const Icon(Icons.menu,
                               color: Color.fromARGB(255, 195, 195, 198)),
                         ),
                       ],
@@ -96,46 +92,68 @@ class _MainPageState extends State<MainPage>
               ],
             ),
           ),
-          bottom: TabBar(
-            controller: controller,
-            indicatorColor: Color.fromARGB(255, 101, 52, 255),
-            labelColor: Color.fromARGB(255, 0, 0, 0),
-            unselectedLabelColor: Color.fromARGB(255, 195, 195, 198),
-            labelStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-              fontFamily: "Inter",
-            ),
-            unselectedLabelStyle: TextStyle(
-              fontStyle: FontStyle.normal,
-              fontSize: 15,
-              fontFamily: "Inter",
-            ),
-            tabs: <Widget>[
-              Center(
-                child: Text('Все'),
-              ),
-              Center(
-                child: Text('Designers'),
-              ),
-              Center(
-                child: Text('Analysts'),
-              ),
-              Center(
-                child: Text('Managers'),
-              ),
-            ],
-          ),
+          bottom: createTabBar(),
         ),
-        body: TabBarView(
-          controller: controller,
-          children: <Widget>[
-            HomePage(),
-            HomePage(),
-            HomePage(),
-            HomePage(),
-          ],
-        ));
+        body: createTabBarView(),
+      ),
+    );
+  }
+
+  TabBar createTabBar() {
+    return const TabBar(
+      // controller: tabController,
+      indicatorWeight: 2,
+      indicatorColor: Color.fromARGB(255, 101, 52, 255),
+      labelColor: Color.fromARGB(255, 0, 0, 0),
+      unselectedLabelColor: Color.fromARGB(255, 195, 195, 198),
+      labelStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 15,
+        fontFamily: "Inter",
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontStyle: FontStyle.normal,
+        fontSize: 15,
+        fontFamily: "Inter",
+      ),
+      tabs: [
+        Center(
+          child: Text('Все'),
+        ),
+        Center(
+          child: Text('Designers'),
+        ),
+        Center(
+          child: Text('Analysts'),
+        ),
+        Center(
+          child: Text('Managers'),
+        ),
+        Center(
+          child: Text('Tech Leaders'),
+        ),
+        Center(
+          child: Text('Art-directors'),
+        ),
+      ],
+      isScrollable: true,
+      labelPadding: EdgeInsets.all(12),
+      padding: EdgeInsets.only(left: 20),
+    );
+  }
+
+  TabBarView createTabBarView() {
+    return const TabBarView(
+      // controller: tabController,
+      children: <Widget>[
+        HomePage(),
+        HomePage(),
+        HomePage(),
+        HomePage(),
+        HomePage(),
+        HomePage(),
+      ],
+    );
   }
 }
 
@@ -146,7 +164,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<DataItem> DataItems = [
+final List<DataItem> DataItems = [
     DataItem(
       id: 1,
       name: "Алексей",
@@ -329,10 +347,10 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
       color: const Color.fromARGB(255, 255, 255, 255),
       child: ListView(
         physics: const BouncingScrollPhysics(),
@@ -412,6 +430,6 @@ class _HomePageState extends State<HomePage> {
           );
         }).toList(),
       ),
-    ));
+    );
   }
 }

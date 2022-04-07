@@ -17,4 +17,9 @@ class DataItem {
       required this.letters,
       required this.imgUrl, 
       required this.dataBD});
+
+  // contains(String value) {}
+
+  // toLowerCase() {}
 }
+

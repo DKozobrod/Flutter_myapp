@@ -1,41 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import '../trainee_app.dart';
 
-// ignore: must_be_immutable
-class DataItemPage extends StatefulWidget {
-  int id;
-  String name;
-  String surname;
-  String profession;
-  String telefon;
-  String letters;
-  String imgUrl;
-  String dataBD;
-
-  DataItemPage(this.id, this.name, this.surname, this.profession, this.telefon,
-      this.letters, this.imgUrl, this.dataBD,
-      {Key? key})
-      : super(key: key);
-
-  @override
-  // ignore: no_logic_in_create_state
-  State<DataItemPage> createState() => _DataItemPageState(
-      id, name, surname, profession, telefon, letters, imgUrl, dataBD);
-}
-
-class _DataItemPageState extends State<DataItemPage> {
-  int id;
-  String name;
-  String surname;
-  String profession;
-  String telefon;
-  String letters;
-  String imgUrl;
-  String dataBD;
-
-  _DataItemPageState(this.id, this.name, this.surname, this.profession,
-      this.telefon, this.letters, this.imgUrl, this.dataBD);
+class UserPage extends StatelessWidget {
+  final User user;
+  const UserPage({Key? key, required this.user}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +35,7 @@ class _DataItemPageState extends State<DataItemPage> {
             padding: const EdgeInsets.only(bottom: 10.0),
             child: CircleAvatar(
               radius: 80.0,
-              backgroundImage: AssetImage(imgUrl),
+              backgroundImage: AssetImage(user.imgUrl),
             ),
           ),
           ListTile(
@@ -75,7 +46,7 @@ class _DataItemPageState extends State<DataItemPage> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
-                    "$name $surname",
+                    "${user.name} ${user.surname}",
                     style: const TextStyle(
                       fontSize: 24,
                       fontFamily: "Inter",
@@ -86,7 +57,7 @@ class _DataItemPageState extends State<DataItemPage> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Text(
-                    letters,
+                    user.letters,
                     style: const TextStyle(
                       fontSize: 17,
                       fontFamily: "Inter",
@@ -102,7 +73,7 @@ class _DataItemPageState extends State<DataItemPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    profession,
+                    user.profession,
                     style: const TextStyle(
                       fontSize: 13,
                       fontFamily: "Inter",
@@ -128,7 +99,7 @@ class _DataItemPageState extends State<DataItemPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 18.0),
                         child: Text(
-                          dataBD,
+                          user.dataBD,
                           style: const TextStyle(
                             fontSize: 16,
                             fontFamily: "Inter",
@@ -159,7 +130,7 @@ class _DataItemPageState extends State<DataItemPage> {
               padding: EdgeInsets.only(left: 8.0),
               child: Icon(Icons.phone_outlined),
             ),
-            title: Text(telefon,
+            title: Text(user.telefon,
                 style: const TextStyle(
                     fontSize: 16,
                     fontFamily: "Inter",
@@ -172,10 +143,10 @@ class _DataItemPageState extends State<DataItemPage> {
                       // launchURL("tel://+7906417827");
                       // },
                       onPressed: () async {
-                        FlutterPhoneDirectCaller.callNumber(telefon);
+                        FlutterPhoneDirectCaller.callNumber(user.telefon);
                       },
                       child: Text(
-                        telefon,
+                        user.telefon,
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: "Inter",
